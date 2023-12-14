@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+
 @dataclass
 class Product:
     """
@@ -9,12 +10,6 @@ class Product:
     price: float
     description: str
     quantity: int
-
-    # def __init__(self, name, price, description, quantity):
-    #     self.name = name
-    #     self.price = price
-    #     self.description = description
-    #     self.quantity = quantity
 
     def check_quantity(self, quantity) -> bool:
         """
@@ -38,6 +33,7 @@ class Product:
 
     def __hash__(self):
         return hash(self.name + self.description)
+
 
 class Cart:
     """
@@ -68,7 +64,7 @@ class Cart:
         Если remove_count не передан, то удаляется вся позиция
         Если remove_count больше, чем количество продуктов в позиции, то удаляется вся позиция
         """
-        if remove_count == None:
+        if remove_count is None:
             del self.products[product]
         elif remove_count >= self.products[product]:
             del self.products[product]
@@ -80,7 +76,7 @@ class Cart:
 
     def get_total_price(self) -> float:
         for product in self.products:
-            if product == 0:
+            if product is None:
                 raise Exception
             else:
                 cart_price = self.products[product] * product.price

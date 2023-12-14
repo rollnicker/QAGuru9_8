@@ -81,7 +81,6 @@ class TestCart:
         assert 13000 == cart.get_total_price()
 
     def test_total_price_with_empty_cart(self, product, cart):
-    #    cart.add_product(product, 120)
         with pytest.raises(Exception):
             assert cart.get_total_price()
 
